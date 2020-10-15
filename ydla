@@ -1,15 +1,16 @@
 #!/bin/bash
 
+#author Delphik
 #Downloads audio mp3 of a video using youtube-dl then checks for updates
 
 #Declare Static Variables
 
 start= pwd
-
+clear
 
 #Creates Directory ~/Music/ydla if it does not exist
 if [ ! -d ~/Music/ydla ]; then
-    echo $'\n'$"Creating Directory : ~/Music/ydla"
+    echo -n $"Creating Directory : ~/Music/ydla"
     mkdir ~/Music/ydla
 fi
 
