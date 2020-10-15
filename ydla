@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Downloads audio mp3 of a video using youtube-dl then checks for updates
+
+youtube-dl -x --audio-quality 0 --audio-format mp3  --add-metadata --embed-thumbnail --ignore-errors $1
+youtube-dl -U
+
+exit
+
