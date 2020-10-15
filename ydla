@@ -2,8 +2,24 @@
 
 #Downloads audio mp3 of a video using youtube-dl then checks for updates
 
+#Declare Static Variables
+
+start= pwd
+
+
+#Creates Directory ~/Music/ydla if it does not exist
+if [ ! -d ~/Music/ydla ]; then
+    echo $'\n'$"Creating Directory : ~/Music/ydla"
+    mkdir ~/Music/ydla
+fi
+
+#Downloads mp3 of link passed to ~/Music/ydla
+cd ~/Music/ydla
 youtube-dl -x --audio-quality 0 --audio-format mp3  --add-metadata --embed-thumbnail --ignore-errors $1
+
+#Checks for updates to youtube-dl
 youtube-dl -U
 
+cd $start
 exit
 
