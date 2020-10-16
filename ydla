@@ -8,19 +8,27 @@
 start= pwd
 clear
 
+# Set BASH to quit script and exit on errors:
+
+set -e
+
 #Creates Directory ~/Music/ydla if it does not exist
+
 if [ ! -d ~/Music/ydla ]; then
     echo -n $"Creating Directory : ~/Music/ydla"
     mkdir ~/Music/ydla
 fi
 
+#Returns to original directory, checks for updates to youtube-dl, and exits
+
+leave () {
+    cd $start
+    youtube-dl -U
+    exit
+}
+
 #Downloads mp3 of link passed to ~/Music/ydla
+
 cd ~/Music/ydla
 youtube-dl -x --audio-quality 0 --audio-format mp3  --add-metadata --embed-thumbnail --ignore-errors $1
-
-#Checks for updates to youtube-dl
-youtube-dl -U
-
-cd $start
-exit
-
+leave
