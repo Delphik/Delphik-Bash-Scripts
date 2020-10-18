@@ -20,6 +20,22 @@ if [ ! -e /usr/local/bin/youtube-dl ]; then
     sudo chmod a+rx /usr/local/bin/youtube-dl
 fi
 
+# Checks for ffmpeg and installs if necessary for apt pacman and dnf based distros
+
+if [ ! -e /usr/bin/ffmpeg ]; then
+    if [ -e /usr/bin/pacman]; then
+        sudo pacman -S ffmpeg 
+    fi
+
+    if [ -e /usr/bin/apt]; then
+        sudo apt install ffmpeg -y
+    fi
+
+    if [ -e /usr/bin/dnf]; then
+        sudo dnf install ffmpeg -y
+        fi
+fi
+
 #Creates Directory ~/Music/ydla if it does not exist
 
 if [ ! -d ~/Music/ydla ]; then
