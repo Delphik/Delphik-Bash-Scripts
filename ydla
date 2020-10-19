@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #author Delphik
-#Downloads audio mp3 of a video using youtube-dl then checks for updates
+#Downloads audio mp3 of a video using youtube-dl
+#   Checks for and resolves dependencies (rpm, apt, and pacman support) 
+#   before executing youtube-dl then checks for updates
 
 #Declare Static Variables
 
@@ -23,17 +25,21 @@ fi
 # Checks for ffmpeg and installs if necessary for apt pacman and dnf based distros
 
 if [ ! -e /usr/bin/ffmpeg ]; then
+    echo "ffmpeg not found, installing ffmpeg"
     if [ -e /usr/bin/pacman]; then
-        sudo pacman -S ffmpeg 
+        echo "Installing ffmpeg with pacman"
+        yes | sudo pacman -S ffmpeg 
     fi
 
     if [ -e /usr/bin/apt]; then
-        sudo apt install ffmpeg -y
+        echo "Installing ffmpeg with apt"
+        yes | sudo apt install ffmpeg
     fi
 
     if [ -e /usr/bin/dnf]; then
-        sudo dnf install ffmpeg -y
-        fi
+        echo "Installing ffmpeg with dnf"
+        yes | sudo dnf install ffmpeg
+    fi
 fi
 
 #Creates Directory ~/Music/ydla if it does not exist

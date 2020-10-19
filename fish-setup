@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#setup for fish shell
+
+
+#dowload and installs oh-my-fish 
+curl -L https://get.oh-my.fish > install
+fish install --path=~/.local/share/omf --config=~/.config/omf
+
+#Tmux autostart
+echo "tmux" >> ~/.config/fish/config.fish
+
+#installs powerline theme
+fish
+omf install bobthefish
+
+exit
