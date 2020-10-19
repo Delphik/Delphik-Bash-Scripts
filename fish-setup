@@ -1,17 +1,36 @@
-#!/bin/bash
+#!/bin/fish
 
-#setup for fish shell
+#setup script for fish shell
 
+#checks for  tmux and exits if not present
+
+if [ ! -e /usr/bin/tmux ]
+    echo "tmux not installed"
+    echo "exiting"
+    exit
+end
+
+#sets fish to default shell
+sudo chsh -s /usr/bin/fish (whoami)
+
+#disable greeting
+set -U fish_greeting
+
+#disable ? globbing
+set -U fish_feature qmark-noglob
+
+#Tmux autostart
+echo "if status is-interactive
+and not set -q TMUX
+    exec tmux
+end" >> ~/.config/fish/config.fish
 
 #dowload and installs oh-my-fish 
 curl -L https://get.oh-my.fish > install
 fish install --path=~/.local/share/omf --config=~/.config/omf
 
-#Tmux autostart
-echo "tmux" >> ~/.config/fish/config.fish
-
 #installs powerline theme
-fish
+#fish
 omf install bobthefish
 
 exit
