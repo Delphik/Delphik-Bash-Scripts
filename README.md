@@ -1,6 +1,7 @@
 # Delphik-Bash-Scripts
 
 Collection of my assorted scripts
+
 @author Max Henny
 
 ## fdup
