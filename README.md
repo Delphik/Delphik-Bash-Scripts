@@ -10,7 +10,7 @@ Fedora updater for dnf and flatpak
 
 ## fish-setup
 
-Setup for fish with powerline and tmux autostart
+Setup for fish with powerline and tmux autostart. Script runs in fish, so fish must be already installed
 
 ## mjup
 
