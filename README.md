@@ -13,8 +13,9 @@ Fedora updater for dnf and flatpak
 Setup for fish with powerline and tmux autostart. Script runs in fish, so fish must be already installed
 
 ## mjup
-
-Manjaro updater for yay and flatpak
+Manjaro updater 
+Uses pacman and flatpak by default
+Yay and flatpak if passed the -y flag
 
 ## ydla
 
