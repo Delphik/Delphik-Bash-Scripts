@@ -1,8 +1,23 @@
 #!/bin/bash
 
-#updates manjaro
+#Updater for Manjaro
 
-sudo pacman -Syu 
+# Set BASH to quit script and exit on errors:
+
+set -e
+
+#Updates with Pacman by default (yay if passed the -y flag) and flatpak
+
+if [ "$1" == "-y" ]; then
+    echo "Updating Repos and AUR with yay"
+    yay -Syu -y
+else
+    echo "Updating Repos with pacman"
+    sudo pacman -Syu 
+fi
+
+echo "Updating FLatpak"
 sudo flatpak update -y
 
+echo "Updates Complete"
 exit
