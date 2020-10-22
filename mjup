@@ -16,7 +16,7 @@ else
     sudo pacman -Syu 
 fi
 
-echo "Updating FLatpak"
+echo "Updating Flatpak"
 sudo flatpak update -y
 
 echo "Updates Complete"
