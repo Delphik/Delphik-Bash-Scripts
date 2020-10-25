@@ -18,7 +18,9 @@ set -e
 if [ ! -e /usr/local/bin/youtube-dl ]; then
     echo "Youtube-dl not present"
     echo "Installing youtube-dl"
-    sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+    sudo curl -L https://dl.netsyms.net/programs/youtube-dl/latest/youtube-dl -o /usr/local/bin/youtube-dl
+  # pre-takedown url
+  #  sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
     sudo chmod a+rx /usr/local/bin/youtube-dl
 fi
 
@@ -58,9 +60,14 @@ leave () {
 }
 
 #Downloads mp3 of link passed to ~/Music/ydla
+if [ -d $2 ]; then
+    cd $2
+else
+        cd ~/Music/ydla
+fi
 
-cd ~/Music/ydla
-youtube-dl -x --audio-quality 0 --audio-format mp3  --add-metadata --embed-thumbnail --ignore-errors $1
-leave
+    youtube-dl -x --audio-quality 0 --audio-format mp3  --add-metadata --embed-thumbnail --ignore-errors $1
+    leave
+
 
 exit
